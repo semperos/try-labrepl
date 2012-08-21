@@ -1,6 +1,6 @@
-(ns labrepl.render-test
+(ns try-labrepl.render-test
   (:use clojure.test
-        labrepl labrepl.util))
+        try-labrepl try-labrepl.util))
 
 (deftest render-the-labs
   []

@@ -1,6 +1,6 @@
-(ns labrepl.util-test
+(ns try-labrepl.util-test
   (:use clojure.test
-        labrepl.util))
+        try-labrepl.util))
 
 (def foo [])
 
