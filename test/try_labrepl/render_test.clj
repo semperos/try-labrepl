@@ -1,6 +1,6 @@
 (ns try-labrepl.render-test
   (:use clojure.test
-        try-labrepl try-labrepl.views.core try-labrepl.util)
+        try-labrepl.views.core try-labrepl.util)
   (:require [noir.server :as server]))
 
 (server/load-views "src/noir-example/views")
@@ -10,7 +10,7 @@
   (doseq [lab all]
     (let [url (lab-url lab)
           application (server/gen-handler {:mode :dev
-                                       :ns 'try-labrepl})
+                                           :ns 'try-labrepl})
           resp (application {:request-method :get
                              :uri url})]
       (is
