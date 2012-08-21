@@ -1,0 +1,13 @@
+bin/*
+classes/*
+lib/*
+autodoc/*
+.circumspec/*
+log
+*~
+target
+/logs/labrepl.log
+.lein-*
+
+# ClojureScript target
+/resources/public/javascripts/app.js
