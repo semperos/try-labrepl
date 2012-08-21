@@ -34,9 +34,9 @@
              (c (new ClassName foo)))))
 
   (testing "repl*"
-    (is (= "(+ 1 2)\n-> 3"
+    (is (= "(+ 1 2)\n;=> 3"
            (repl* (+ 1 2))))
-    (is (= "( + 3 4 )\n-> 7"
+    (is (= "( + 3 4 )\n;=> 7"
            (repl* "( + 3 4 )"))))
 
   (testing "source"
