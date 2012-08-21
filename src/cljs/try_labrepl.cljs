@@ -80,22 +80,11 @@
 (defn hide-sidebar
   "Hide the sidebar in which the console is displayed"
   []
-  (let [header ($ "#header")
-        content ($ "#content")
-        footer ($ "#footer")
-        sb (. content find "#sidebar")
-        csole (. sb find "#console")
-        reset-repl (. sb find "#console-reset")
-        inner-content (. content find "#inner-content")]
-    ;; Remove tooling
+  (let [csole ($ "#sidebar #console")]
     (remove-console-reset)
-    ;; Hide console, now that it's instantiated, should be fine
     (. csole hide)
-    ;; Shrink sidebar content
     (contract-sidebar-content)
-    ;; Grow inner-content to original
     (expand-inner-content)
-    ;; Shrink overall width to original
     (contract-width)))
 
 (defn eval-clojure
@@ -140,17 +129,10 @@
 (defn show-sidebar
   "Show the sidebar in which the console is displayed"
   []
-  (let [content ($ "#content")
-        header ($ "#header")
-        footer ($ "#footer")
-        sb (. content find "#sidebar")
-        csole (. sb find "#console")
-        csole-wrapper (. sb find "#console-wrapper")
-        inner-content (. content find "#inner-content")]
+  (let [csole ($ "#sidebar #console")]
     (expand-width)
     (contract-inner-content)
     (expand-sidebar-content)
-    ;; Append tooling
     (add-console-reset)
     (if-not @clj-console-enabled
       (do
@@ -171,10 +153,8 @@
                                (hide-sidebar)
                                (show-sidebar))))))))
 
-;; Support simply clicking on code snippets and having them pasted
-;; into the console
-
 (defn enable-code-pasting
+  "Support simply clicking on code snippets and having them pasted into the console"
   []
   (let [sel ($ ".syntaxhighlighter.clojure")
         csole ($ "#content #sidebar #console")
