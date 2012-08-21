@@ -53,6 +53,21 @@
     (. csole removeClass "console-visible")
     (. sb css "width" "0px")))
 
+(defn hide-console
+  []
+  (let [csole ($ "#sidebar #console")]
+    (. csole hide)))
+
+(defn show-console
+  []
+  (let [csole ($ "#sidebar #console")]
+    (. csole show)))
+
+(defn click-console
+  []
+  (let [csole ($ "#sidebar #console")]
+    (. csole click)))
+
 (defn reset-console
   []
   (. @clj-console reset))
@@ -80,12 +95,11 @@
 (defn hide-sidebar
   "Hide the sidebar in which the console is displayed"
   []
-  (let [csole ($ "#sidebar #console")]
-    (remove-console-reset)
-    (. csole hide)
-    (contract-sidebar-content)
-    (expand-inner-content)
-    (contract-width)))
+  (remove-console-reset)
+  (hide-console)
+  (contract-sidebar-content)
+  (expand-inner-content)
+  (contract-width))
 
 (defn eval-clojure
   [code]
@@ -129,19 +143,18 @@
 (defn show-sidebar
   "Show the sidebar in which the console is displayed"
   []
-  (let [csole ($ "#sidebar #console")]
-    (expand-width)
-    (contract-inner-content)
-    (expand-sidebar-content)
-    (add-console-reset)
-    (if-not @clj-console-enabled
-      (do
-        (reset! clj-console-enabled true)
-        ;; Already auto-focuses the console
-        (enable-clj-console))
-      (do
-        (. csole show)
-        (. csole click)))))
+  (expand-width)
+  (contract-inner-content)
+  (expand-sidebar-content)
+  (add-console-reset)
+  (if-not @clj-console-enabled
+    (do
+      (reset! clj-console-enabled true)
+      ;; Already auto-focuses the console
+      (enable-clj-console))
+    (do
+      (show-console)
+      (click-console))))
 
 (defn toggle-sidebar
   []
