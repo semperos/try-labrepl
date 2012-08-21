@@ -33,18 +33,18 @@
 
 (defn expand-inner-content
   []
-  (. ($ "#content #inner-content") css "width" "740px"))
+  (. ($ "#content #inner-content") removeClass "contracted-inner-width"))
 
 (defn contract-inner-content
   []
-  (. ($ "#content #inner-content") css "width" "600px"))
+  (. ($ "#content #inner-content") addClass "contracted-inner-width"))
 
 (defn expand-sidebar-content
   []
   (let [sb ($ "#content #sidebar")
         csole (. sb find "#console")]
     (. csole addClass "console-visible")
-    (. sb css "width" "410px")))
+    (. sb css "width" "510px")))
 
 (defn contract-sidebar-content
   []

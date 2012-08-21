@@ -101,6 +101,10 @@ ol li { list-style-type: decimal; margin-left: 20px; }
   width: 1024px !important;
 }
 
+.contracted-inner-width {
+  width: 500px !important;
+}
+
 #browser #header, #browser #footer, #browser #content {
   width: 940px;
 }
@@ -168,7 +172,7 @@ div.syntaxhighlighter { border: 1px solid #ddd !important; padding: 0.6em !impor
   font-family: monospace;
   position: fixed;
   overflow: auto;
-  width: 410px;
+  width: 510px;
 }
 
 .jquery-console-prompt-label {
